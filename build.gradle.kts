@@ -51,15 +51,8 @@ subprojects {
 
     dependencies {
 
-        //spring boot
-        implementation(Libs.spring_boot_starter("web")) {
-            exclude("org.springframework.boot", "spring-boot-starter-tomcat")
-        }
 
-        implementation(Libs.h2_database)
-        implementation(Libs.spring_boot_starter("undertow"))
-        implementation(Libs.spring_boot_starter("security"))
-        implementation(Libs.spring_boot_starter("data-jpa"))
+
 
         implementation(Libs.jackson_module_kotlin)
 
@@ -67,10 +60,7 @@ subprojects {
         implementation(Libs.kotlin_reflect)
         implementation(Libs.kotlin_stdlib)
 
-        //test
-        testImplementation(Libs.spring_boot_starter_test) {
-            exclude("org.junit.vintage", "junit-vintage-engine")
-        }
+
     }
 
     dependencyManagement {

@@ -9,5 +9,6 @@ project(":infrastructure") {
     bootJar.enabled = false
 
     dependencies {
+        implementation(Libs.h2_database)
     }
 }

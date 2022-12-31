@@ -10,5 +10,6 @@ project(":domain") {
 
     dependencies {
         implementation(project(":infrastructure"))
+        implementation(Libs.spring_boot_starter("data-jpa"))
     }
 }
