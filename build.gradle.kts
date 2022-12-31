@@ -68,7 +68,9 @@ subprojects {
         implementation(Libs.kotlin_stdlib)
 
         //test
-        testImplementation(Libs.spring_boot_starter_test)
+        testImplementation(Libs.spring_boot_starter_test) {
+            exclude("org.junit.vintage", "junit-vintage-engine")
+        }
     }
 
     dependencyManagement {
