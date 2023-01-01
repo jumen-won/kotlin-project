@@ -4,6 +4,7 @@ object Libs {
     val spring_boot_starter = "org.springframework.boot:spring-boot-starter"
     fun spring_boot_starter(moduleName: String) = "$spring_boot_starter-$moduleName"
     val spring_boot_starter_test = "org.springframework.boot:spring-boot-starter-test"
+    val spring_security_test = "org.springframework.security:spring-security-test"
 
     // plugin_spring
     val plugin_spring = "org.jetbrains.kotlin.plugin.spring"
@@ -17,7 +18,11 @@ object Libs {
     val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib"
 
+    // h2
     val h2_database = "com.h2database:h2"
+
+    // mockk
+    val mockk = "io.mockk:mockk:${Versions.mockk}"
 
 }
 
@@ -28,6 +33,7 @@ object Versions {
     val plugin_spring = "1.7.22"
     val plugin_jpa = "1.7.22"
     val kapt = "1.7.22"
+    val mockk = "1.12.0"
 }
 
 object Plugins {

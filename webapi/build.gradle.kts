@@ -11,7 +11,7 @@ project(":webapi") {
 
         //spring boot
         implementation(Libs.spring_boot_starter("web")) {
-            exclude("org.springframework.boot", "spring-boot-starter-tomcat")
+            exclude(Libs.spring_boot, "spring-boot-starter-tomcat")
         }
 
         implementation(Libs.spring_boot_starter("undertow"))
@@ -21,5 +21,8 @@ project(":webapi") {
         testImplementation(Libs.spring_boot_starter_test) {
             exclude("org.junit.vintage", "junit-vintage-engine")
         }
+        testImplementation(Libs.spring_security_test)
+        testImplementation(Libs.mockk)
+
     }
 }
