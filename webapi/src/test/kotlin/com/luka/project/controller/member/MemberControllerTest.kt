@@ -1,7 +1,6 @@
 package com.luka.project.controller.member
 
 import com.luka.project.service.member.MemberApiService
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,6 +26,5 @@ class MemberControllerTest {
             .willReturn("luka")
         mockMvc.perform(get("/api/member"))
             .andExpect(status().isOk)
-
     }
 }

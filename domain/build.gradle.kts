@@ -11,5 +11,10 @@ project(":domain") {
     dependencies {
         implementation(project(":infrastructure"))
         implementation(Libs.spring_boot_starter("data-jpa"))
+        // test
+        testImplementation(Libs.spring_boot_starter_test) {
+            exclude("org.junit.vintage", "junit-vintage-engine")
+        }
+        testImplementation(Libs.mockk)
     }
 }
