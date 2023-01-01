@@ -50,22 +50,17 @@ subprojects {
     apply(plugin = Libs.plugin_jpa)
 
     dependencies {
-
-
-
-
         implementation(Libs.jackson_module_kotlin)
 
         //kotlin
         implementation(Libs.kotlin_reflect)
         implementation(Libs.kotlin_stdlib)
-
-
     }
 
     dependencyManagement {
         imports {
             mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+            mavenBom("org.testcontainers:testcontainers-bom:1.15.1")
         }
     }
 
