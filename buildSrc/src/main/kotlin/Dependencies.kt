@@ -18,11 +18,20 @@ object Libs {
     val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib"
 
-    // h2
-    val h2_database = "com.h2database:h2"
 
     // mockk
     val mockk = "io.mockk:mockk:${Versions.mockk}"
+
+    // testcontainers
+    fun testcontainers(moduleName: String) = "org.testcontainers:$moduleName"
+    val testcontainers_bom = "org.testcontainers:testcontainers-bom:${Versions.testcontainers}"
+
+    // database
+    val h2 = "com.h2database:h2"
+    val postgresql = "org.postgresql:postgresql"
+
+    // jna
+    val jna = "net.java.dev.jna:jna:${Versions.jna}"
 
 }
 
@@ -34,6 +43,8 @@ object Versions {
     val plugin_jpa = "1.7.22"
     val kapt = "1.7.22"
     val mockk = "1.12.0"
+    val testcontainers = "1.15.1"
+    val jna = "5.7.0"
 }
 
 object Plugins {

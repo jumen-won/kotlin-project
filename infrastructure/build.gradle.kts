@@ -9,6 +9,7 @@ project(":infrastructure") {
     bootJar.enabled = false
 
     dependencies {
-        runtimeOnly(Libs.h2_database)
+        runtimeOnly(Libs.h2)
+        implementation(Libs.postgresql)
     }
 }

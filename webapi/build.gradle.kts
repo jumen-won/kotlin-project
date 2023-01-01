@@ -18,20 +18,17 @@ project(":webapi") {
         implementation(Libs.spring_boot_starter("security"))
         implementation(Libs.spring_boot_starter("data-jpa"))
 
-        implementation("net.java.dev.jna:jna:5.7.0")
+        implementation(Libs.jna)
 
-        //test
+        // test
         testImplementation(Libs.spring_boot_starter_test) {
             exclude("org.junit.vintage", "junit-vintage-engine")
         }
         testImplementation(Libs.spring_security_test)
         testImplementation(Libs.mockk)
 
-        implementation("org.testcontainers:junit-jupiter")
-        implementation("org.testcontainers:postgresql")
-
-        implementation("org.postgresql:postgresql")
-
+        testImplementation(Libs.testcontainers("junit-jupiter"))
+        testImplementation(Libs.testcontainers("postgresql"))
 
     }
 }

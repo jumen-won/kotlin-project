@@ -60,7 +60,7 @@ subprojects {
     dependencyManagement {
         imports {
             mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-            mavenBom("org.testcontainers:testcontainers-bom:1.15.1")
+            mavenBom(Libs.testcontainers_bom)
         }
     }
 
