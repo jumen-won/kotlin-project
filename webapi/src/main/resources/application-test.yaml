@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:tc:postgresql:///test-database
+    url: jdbc:tc:postgresql:///kotlin-project
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
