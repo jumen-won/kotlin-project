@@ -16,5 +16,8 @@ project(":domain") {
             exclude("org.junit.vintage", "junit-vintage-engine")
         }
         testImplementation(Libs.mockk)
+
+        testImplementation(Libs.testcontainers("junit-jupiter"))
+        testImplementation(Libs.testcontainers("postgresql"))
     }
 }

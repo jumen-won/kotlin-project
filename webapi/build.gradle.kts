@@ -18,8 +18,6 @@ project(":webapi") {
         implementation(Libs.spring_boot_starter("security"))
         implementation(Libs.spring_boot_starter("data-jpa"))
 
-        implementation(Libs.jna)
-
         // test
         testImplementation(Libs.spring_boot_starter_test) {
             exclude("org.junit.vintage", "junit-vintage-engine")

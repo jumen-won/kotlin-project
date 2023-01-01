@@ -11,5 +11,6 @@ project(":infrastructure") {
     dependencies {
         runtimeOnly(Libs.h2)
         implementation(Libs.postgresql)
+        implementation(Libs.jna)
     }
 }
