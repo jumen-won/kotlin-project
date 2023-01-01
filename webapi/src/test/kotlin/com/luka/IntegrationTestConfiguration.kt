@@ -8,7 +8,6 @@ import org.testcontainers.junit.jupiter.Testcontainers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 @Testcontainers
 abstract class IntegrationTestConfiguration {
     // 해당 static 변수를 설정해야 컨테이너를 띄운다.
