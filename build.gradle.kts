@@ -6,15 +6,22 @@ plugins {
     id(Plugins.spring_dependency_management) version Versions.spring_dependency_management
     kotlin(Plugins.jvm) version Versions.jvm
     kotlin(Plugins.kapt) version Versions.kapt
-    kotlin(Plugins.plugin_spring) version Versions.plugin_spring apply true
-    kotlin(Plugins.plugin_jpa) version Versions.plugin_jpa apply true
+    kotlin(Plugins.plugin_spring) version Versions.plugin_spring
+    kotlin(Plugins.plugin_jpa) version Versions.plugin_jpa
+
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_17
 
+subprojects {
+    apply {
+        plugin(Libs.spring_boot)
+        plugin(Plugins.spring_dependency_management)
+    }
+}
 
 springBoot {
-    mainClass.set("com.luka.WebApiApplicationKt")
+    mainClass.set("com.kakao.WebApiApplicationKt")
 }
 
 allOpen {
@@ -29,7 +36,7 @@ jar.enabled = false
 bootJar.enabled = false
 
 allprojects {
-    group = "com.luka"
+    group = "com.kakao"
     version = "1.0-SNAPSHOT"
 
     repositories {
@@ -55,6 +62,8 @@ subprojects {
         //kotlin
         implementation(Libs.kotlin_reflect)
         implementation(Libs.kotlin_stdlib)
+        implementation(Libs.kotlin_logging_jvm)
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     }
 
     dependencyManagement {

@@ -23,7 +23,7 @@ object Libs {
     val mockk = "io.mockk:mockk:${Versions.mockk}"
 
     // testcontainers
-    fun testcontainers(moduleName: String) = "org.testcontainers:$moduleName"
+    fun testcontainers(moduleName: String) = "org.testcontainers:$moduleName:${Versions.testcontainers}"
     val testcontainers_bom = "org.testcontainers:testcontainers-bom:${Versions.testcontainers}"
 
     // database
@@ -33,9 +33,24 @@ object Libs {
     // jna
     val jna = "net.java.dev.jna:jna:${Versions.jna}"
 
+    val kotlin_logging_jvm = "io.github.microutils:kotlin-logging-jvm:${Versions.kotlin_logging_jvm}"
+
+    val mysql_connector_java = "mysql:mysql-connector-java"
+
+    val redisson = "org.redisson:redisson-spring-boot-starter:${Versions.redisson}"
+
+    val spring_kafka = "org.springframework.kafka:spring-kafka"
+
+    val kafka_clients = "org.apache.kafka:kafka-clients:${Versions.kafka_clients}"
+
+    val commons_lang3 = "org.apache.commons:commons-lang3:${Versions.commons_lang3}"
+
+
 }
 
 object Versions {
+    val commons_lang3 = "3.12.0"
+    val kafka_clients = "2.8.0"
     val spring_boot = "2.7.7"
     val spring_dependency_management = "1.0.15.RELEASE"
     val jvm = "1.8.0"
@@ -43,8 +58,10 @@ object Versions {
     val plugin_jpa = "1.7.22"
     val kapt = "1.7.22"
     val mockk = "1.12.0"
-    val testcontainers = "1.15.1"
+    val testcontainers = "1.17.2"
     val jna = "5.7.0"
+    val kotlin_logging_jvm = "2.1.23"
+    val redisson = "3.17.7"
 }
 
 object Plugins {

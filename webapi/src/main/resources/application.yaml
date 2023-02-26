@@ -1,16 +1,31 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/kakao
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: luka
+    password: 1234
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      connection-init-sql: SELECT 1
+      validation-timeout: 2000
+      minimum-idle: 10
+      idle-timeout: 600000
+      max-lifetime: 1800000
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-  security:
-    user:
-      name: luka
-      password: 1234
-      roles: USER
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        show_sql: true
+    hibernate:
+      ddl-auto: none
+  redis:
+    host: localhost
+    port: 6379
+  kafka:
+    bootstrap-servers: localhost:29092
+    topics:
+      DataLogEvent: "DataLogEvent"
+

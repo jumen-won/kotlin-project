@@ -1,0 +1,31 @@
+#spring:
+#  datasource:
+##    url: jdbc:tc:mysql:8.0///kakao2
+##    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+##    username: test
+##    password: test
+#    hikari:
+#      maximum-pool-size: 100
+#      connection-timeout: 30000
+#      connection-init-sql: SELECT 1
+#      validation-timeout: 10000
+#      minimum-idle: 30
+#      idle-timeout: 600000
+#      max-lifetime: 1800000
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        format_sql: true
+#        show_sql: true
+#    hibernate:
+#      ddl-auto: none
+#  redis:
+##    host: redis://test
+##    port: 6379
+#  kafka:
+#    bootstrap-servers: localhost:29092
+#    topics:
+#      DataLogEvent: "DataLogEvent"
+#

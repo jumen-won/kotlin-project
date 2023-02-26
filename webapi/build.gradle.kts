@@ -1,5 +1,4 @@
 plugins {}
-dependencies {}
 project(":webapi") {
     val jar: Jar by tasks
     val bootJar: org.springframework.boot.gradle.tasks.bundling.BootJar by tasks
@@ -7,26 +6,22 @@ project(":webapi") {
     bootJar.enabled = true
 
     dependencies {
-        implementation(project(":domain"))
+        implementation(project(":service"))
 
-        //spring boot
-        implementation(Libs.spring_boot_starter("web")) {
-            exclude(Libs.spring_boot, "spring-boot-starter-tomcat")
-        }
-
+        implementation(Libs.spring_boot_starter("web")) { exclude(Libs.spring_boot, "spring-boot-starter-tomcat") }
         implementation(Libs.spring_boot_starter("undertow"))
-        implementation(Libs.spring_boot_starter("security"))
-        implementation(Libs.spring_boot_starter("data-jpa"))
 
-        // test
-        testImplementation(Libs.spring_boot_starter_test) {
-            exclude("org.junit.vintage", "junit-vintage-engine")
-        }
-        testImplementation(Libs.spring_security_test)
+        testImplementation(Libs.spring_boot_starter_test) { exclude("org.junit.vintage", "junit-vintage-engine") }
         testImplementation(Libs.mockk)
-
+        testImplementation(Libs.kafka_clients)
+        testImplementation(Libs.commons_lang3)
         testImplementation(Libs.testcontainers("junit-jupiter"))
-        testImplementation(Libs.testcontainers("postgresql"))
-
+        testImplementation(Libs.testcontainers("testcontainers")) // mysql 컨테이너를 사용한다면 추가
+        testImplementation(Libs.testcontainers("mysql"))
+        testImplementation(Libs.testcontainers("kafka"))
     }
+}
+
+springBoot {
+    buildInfo()
 }
