@@ -3,6 +3,7 @@
 ## 목차
 
 - [개발 환경](#개발-환경)
+- [구동](#구동)
 - [API 명세](#API-명세)
 - [요구사항](#요구사항)
 
@@ -25,6 +26,14 @@
 
 ## API 명세
 http://localhost:8080/swagger-ui.html
+
+## 구동
+```
+// 터미널
+docker-compose up -d
+cd webapi/build/libs
+java -jar webapi-1.0-SNAPSHOT.jar
+```
 
 ## DB
 ### 상품 테이블
