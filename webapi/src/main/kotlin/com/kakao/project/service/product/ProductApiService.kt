@@ -4,6 +4,7 @@ import com.kakao.project.product.PopularProductInfo
 import com.kakao.project.product.ProductInfo
 import com.kakao.project.product.ProductService
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class ProductApiService(
@@ -13,8 +14,8 @@ class ProductApiService(
         return productService.getProductInfoList()
     }
 
-    fun getPopularProductList(): List<PopularProductInfo> {
-        return productService.getPopularProductInfoList().sortedByDescending { it.count }
+    fun getPopularProductList(requestDate: LocalDate): List<PopularProductInfo> {
+        return productService.getPopularProductInfoList(requestDate).sortedByDescending { it.count }
     }
 
 }

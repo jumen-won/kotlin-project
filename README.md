@@ -269,14 +269,15 @@ GET http://localhost:8080/api/products/popular
 
 #Response
 {
-  "products": [
+  "baseDate": "2023-02-27",
+  "popularProductInfoList": [
     {
       "productInfo": {
-        "productId": "coffee.7",
-        "title": "test_coffee_7",
-        "price": 7000
+        "productId": "coffee.2",
+        "title": "test_coffee_2",
+        "price": 2000
       },
-      "count": 100
+      "count": 77791
     },
     {
       "productInfo": {
@@ -284,15 +285,15 @@ GET http://localhost:8080/api/products/popular
         "title": "test_coffee_1",
         "price": 1000
       },
-      "count": 50
+      "count": 7777
     },
     {
       "productInfo": {
-        "productId": "coffee.2",
-        "title": "test_coffee_2",
-        "price": 2000
+        "productId": "coffee.3",
+        "title": "test_coffee_3",
+        "price": 3000
       },
-      "count": 7
+      "count": 77
     }
   ]
 }

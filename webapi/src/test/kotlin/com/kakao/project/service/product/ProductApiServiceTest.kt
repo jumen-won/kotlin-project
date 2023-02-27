@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 
 class ProductApiServiceTest {
     private val productService: ProductService = mockk(relaxed = true)
@@ -42,16 +43,18 @@ class ProductApiServiceTest {
     @DisplayName("인기메뉴 목록 조회")
     fun getPopularProductList() {
 
+        val requestDate = LocalDate.now()
+
         // case
         val dummyPopularProductInfoLists = listOf(
             PopularProductInfo(dummyProductInfo("sample.coffee.1"), 10),
             PopularProductInfo(dummyProductInfo("sample.coffee.2"), 100),
             PopularProductInfo(dummyProductInfo("sample.coffee.3"), 1000)
         )
-        every { productService.getPopularProductInfoList() } returns dummyPopularProductInfoLists
+        every { productService.getPopularProductInfoList(requestDate) } returns dummyPopularProductInfoLists
 
         // when
-        val popularProductList = cut.getPopularProductList()
+        val popularProductList = cut.getPopularProductList(requestDate)
 
         // then
         assertEquals(popularProductList.size, dummyPopularProductInfoLists.size)

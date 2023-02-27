@@ -39,10 +39,10 @@ class ProductServiceTest {
             ProductCountPair("sample.coffee.5", 100000000),
         ).sortedByDescending { it.second }
 
-        val now = LocalDate.now()
+        val requestDate = LocalDate.now()
 
         for (before in 0 until days) {
-            val targetDate = now.minusDays(before.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
+            val targetDate = requestDate.minusDays(before.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
             every {
                 purchaseEventService.getProductCountPairListByDate(
                     targetDate,
@@ -52,7 +52,7 @@ class ProductServiceTest {
         }
 
         // when
-        val popularProductList = cut.getPopularProductInfoList()
+        val popularProductList = cut.getPopularProductInfoList(requestDate)
 
         // then
         assertEquals(popularProductList.size, size)

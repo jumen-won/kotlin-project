@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @RestController
 @RequestMapping(PATH_API_PRODUCTS)
@@ -27,7 +29,11 @@ class ProductController(
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "OK")])
     @GetMapping("/popular")
     fun getPopularProductList(): PopularProductListResponse {
-        return PopularProductListResponse(productApiService.getPopularProductList())
+        val requestDate = LocalDate.now()
+        return PopularProductListResponse(
+            baseDate = requestDate.format(DateTimeFormatter.ISO_LOCAL_DATE),
+            popularProductInfoList = productApiService.getPopularProductList(requestDate)
+        )
     }
 
     companion object {

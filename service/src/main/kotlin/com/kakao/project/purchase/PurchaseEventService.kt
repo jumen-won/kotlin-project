@@ -40,7 +40,7 @@ class PurchaseEventService(
 
         if (!redisTemplate.hasKey(purchaseDateKey)) {
             zSet.add(purchaseDateKey, productIdMemberKey, quantity.toDouble())
-            redisTemplate.expire(purchaseDateKey, 1, TimeUnit.HOURS)
+            redisTemplate.expire(purchaseDateKey, PURCHASE_DATE_KEY_EXPIRE_TIMEOUT, PURCHASE_DATE_KEY_EXPIRE_UNIT)
         } else {
             zSet.incrementScore(purchaseDateKey, productIdMemberKey, quantity.toDouble())
         }
@@ -60,5 +60,7 @@ class PurchaseEventService(
         private const val PURCHASE_ZSET_KEY_SUFFIX = "{DATE}"
         private const val PRODUCT_MEMBER_KEY_PREFIX = "Product:"
         private const val PRODUCT_MEMBER_KEY_SUFFIX = "{PRODUCT_ID}"
+        private const val PURCHASE_DATE_KEY_EXPIRE_TIMEOUT = 1L
+        private val PURCHASE_DATE_KEY_EXPIRE_UNIT = TimeUnit.DAYS
     }
 }

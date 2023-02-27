@@ -2,13 +2,10 @@ package com.kakao.project.product
 
 import com.kakao.project.exception.EntityNotFoundException
 import com.kakao.project.purchase.PurchaseEventService
-import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
-private val logger = KotlinLogging.logger {}
 
 @Service
 @Transactional(readOnly = true)
@@ -28,18 +25,15 @@ class ProductService(
         return products.map { ProductInfo(it) }
     }
 
-    fun getPopularProductInfoList(): List<PopularProductInfo> {
+    fun getPopularProductInfoList(requestDate: LocalDate): List<PopularProductInfo> {
 
-        val now = LocalDate.now()
         val productScoreMap = mapOf<String, Long>().toMutableMap()
 
-
         for (before in 0 until getStandardDays) {
-            val targetDate = now.minusDays(before.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
+            val targetDate = requestDate.minusDays(before.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
             val productWithCountList =
                 purchaseEventService.getProductCountPairListByDate(targetDate, getStandardSize.toLong())
             productWithCountList.forEach {
-                logger.info { "[$targetDate] $it" }
                 productScoreMap.merge(it.first, it.second) { a, b -> a + b }
             }
         }

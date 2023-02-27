@@ -50,7 +50,7 @@ class ProductControllerTest(
             .andExpect {
                 val response =
                     objectMapper.readValue(it.response.contentAsString, PopularProductListResponse::class.java)
-                val products = response.products
+                val products = response.popularProductInfoList
                 products.forEach { product -> println(product) }
                 assertEquals(3, products.size)
                 assertEquals(7, products.first().count)
@@ -74,7 +74,7 @@ class ProductControllerTest(
             .andExpect {
                 val response =
                     objectMapper.readValue(it.response.contentAsString, PopularProductListResponse::class.java)
-                val products = response.products
+                val products = response.popularProductInfoList
                 products.forEach { product -> println(product) }
                 assertEquals(3, products.size)
                 assertEquals(110000, products.first().count)
@@ -127,7 +127,7 @@ class ProductControllerTest(
             .andExpect {
                 val response =
                     objectMapper.readValue(it.response.contentAsString, PopularProductListResponse::class.java)
-                val products = response.products
+                val products = response.popularProductInfoList
                 products.forEach { product -> println(product) }
                 assertEquals(3, products.size)
                 assertEquals(3, products.first().count)
