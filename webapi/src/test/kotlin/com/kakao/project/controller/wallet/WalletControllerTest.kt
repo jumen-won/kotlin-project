@@ -6,6 +6,7 @@ import com.kakao.project.controller.PATH_API
 import com.kakao.project.exception.InsufficientChargeMinimumConditionsException
 import com.kakao.project.wallet.WalletInfo
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -36,6 +37,7 @@ class WalletControllerTest(
     }
 
     @Test
+    @DisplayName("포인트 충전 동시성 테스트")
     fun charge_concurrency() {
         val createWallet = createWallet()
 
@@ -76,6 +78,7 @@ class WalletControllerTest(
     }
 
     @Test
+    @DisplayName("포인트 충전 정상 응답")
     fun charge() {
         val createWallet = createWallet()
         val walletChargeRequest = WalletChargeRequest(walletId = createWallet.walletId, amount = 10000L)
@@ -92,6 +95,7 @@ class WalletControllerTest(
     }
 
     @Test
+    @DisplayName("충전 금액 최소 조건 미달시 에러 발생")
     fun `when amount is under minimum, throw Exception`() {
         val createWallet = createWallet()
 

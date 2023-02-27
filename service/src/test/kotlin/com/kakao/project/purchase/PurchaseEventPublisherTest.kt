@@ -5,6 +5,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.context.ApplicationEventPublisher
 import java.time.LocalDate
@@ -19,6 +20,7 @@ class PurchaseEventPublisherTest {
     }
 
     @Test
+    @DisplayName("주문 이벤트 및 데이터 수집 이벤트 생성")
     fun publish() {
 
         // case
@@ -53,9 +55,5 @@ class PurchaseEventPublisherTest {
 
         val dataLogEvent = slots.last() as DataLogEvent
         assertEquals(dataLogEvent.data as PurchaseCreatedEvent, purchaseCreatedEvent)
-    }
-
-    @Test
-    fun publishDataLogEvent() {
     }
 }

@@ -4,6 +4,7 @@ import com.kakao.project.exception.EntityNotFoundException
 import com.kakao.project.exception.InsufficientBalanceException
 import com.kakao.project.product.ProductInfo
 import com.kakao.project.product.ProductService
+import com.kakao.project.wallet.Wallet
 import com.kakao.project.wallet.WalletService
 import com.kakao.project.wallet.WalletTransactionService
 import io.mockk.every
@@ -14,6 +15,7 @@ import io.mockk.slot
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -41,6 +43,7 @@ class PurchaseServiceTest {
     }
 
     @Test
+    @DisplayName("주문 정상 처리")
     fun purchase() {
 
         // case
@@ -106,6 +109,7 @@ class PurchaseServiceTest {
     }
 
     @Test
+    @DisplayName("존재하지 않는 상품 주문시 에러 발생")
     fun `when product not found, throw Exception`() {
         // case
         val productId = "wrong.product.id"
@@ -116,6 +120,7 @@ class PurchaseServiceTest {
     }
 
     @Test
+    @DisplayName("지갑이 존재하지 않는 경우 에러 발생")
     fun `when wallet not found, throw Exception`() {
         // case
         val walletId = Long.MAX_VALUE
@@ -126,6 +131,7 @@ class PurchaseServiceTest {
     }
 
     @Test
+    @DisplayName("잔액이 부족한 경우 에러 발생")
     fun `when wallet's balance less than products's price, throw Exception`() {
 
         // case
@@ -142,7 +148,7 @@ class PurchaseServiceTest {
         assertThrows<InsufficientBalanceException> { cut.purchase(dummyProductInfo.productId, dummyWallet.identifier, quantity) }
     }
 
-    private fun dummyWallet(): com.kakao.project.wallet.Wallet = com.kakao.project.wallet.Wallet()
+    private fun dummyWallet(): Wallet = Wallet()
 
     private fun dummyProductInfo(productId: String): ProductInfo {
         return ProductInfo(

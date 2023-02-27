@@ -5,10 +5,11 @@ import io.mockk.mockk
 import io.mockk.slot
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class WalletTransactionServiceTest {
-    private val walletTransactionRepository: com.kakao.project.wallet.WalletTransactionRepository = mockk(relaxed = true)
+    private val walletTransactionRepository: WalletTransactionRepository = mockk(relaxed = true)
     private lateinit var cut: WalletTransactionService
 
     @BeforeEach
@@ -17,6 +18,7 @@ class WalletTransactionServiceTest {
     }
 
     @Test
+    @DisplayName("포인트 충전 트랜잭션 저장 처리")
     fun charge() {
         // case
         val walletId = 1L
@@ -39,6 +41,7 @@ class WalletTransactionServiceTest {
     }
 
     @Test
+    @DisplayName("포인트 결제 트랜잭션 저장 처리")
     fun withdraw() {
         // case
         val walletId = 1L

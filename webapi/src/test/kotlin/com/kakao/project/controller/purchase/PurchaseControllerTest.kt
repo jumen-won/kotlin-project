@@ -9,6 +9,7 @@ import com.kakao.project.exception.InsufficientBalanceException
 import com.kakao.project.purchase.PurchaseInfo
 import com.kakao.project.wallet.WalletInfo
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -26,6 +27,7 @@ class PurchaseControllerTest(
 ) : IntegrationTestConfig() {
 
     @Test
+    @DisplayName("커피 주문 정상 응답")
     fun purchase() {
         val productId = "coffee.1"
         val price = 1000L
@@ -52,6 +54,7 @@ class PurchaseControllerTest(
     }
 
     @Test
+    @DisplayName("커피 주문 동시성 테스트")
     fun purchase_concurrency() {
         val createWallet = createWallet()
         val chargeAmount = 10000L
@@ -97,6 +100,7 @@ class PurchaseControllerTest(
     }
 
     @Test
+    @DisplayName("존재하지 않는 상품 주문시 에러 발생")
     fun `when product not exists, throw Exception`() {
         val createWallet = createWallet()
         val purchaseRequest =
@@ -115,6 +119,7 @@ class PurchaseControllerTest(
     }
 
     @Test
+    @DisplayName("존재하지 않는 지갑인 경우 에러 발생")
     fun `when wallet not exists, throw Exception`() {
         val createWallet = createWallet()
         val purchaseRequest = PurchaseRequest(productId = "coffee.1", walletId = createWallet.walletId, quantity = 1)
@@ -132,6 +137,7 @@ class PurchaseControllerTest(
     }
 
     @Test
+    @DisplayName("잔액이 부족한 경우 에러 발생")
     fun `when balance less than totalPrice, throw Exception`() {
         val createWallet = createWallet()
         val purchaseRequest = PurchaseRequest(productId = "coffee.1", walletId = createWallet.walletId, quantity = 111)

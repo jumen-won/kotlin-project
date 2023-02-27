@@ -52,9 +52,10 @@ subprojects {
 
     // spring
     apply(plugin = Plugins.spring_dependency_management)
-    apply(plugin = Libs.spring_boot)
+    apply(plugin = Plugins.spring_boot)
     apply(plugin = Libs.plugin_spring)
     apply(plugin = Libs.plugin_jpa)
+
 
     dependencies {
         implementation(Libs.jackson_module_kotlin)
@@ -63,7 +64,8 @@ subprojects {
         implementation(Libs.kotlin_reflect)
         implementation(Libs.kotlin_stdlib)
         implementation(Libs.kotlin_logging_jvm)
-        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+        annotationProcessor(Libs.annotation_processor)
     }
 
     dependencyManagement {

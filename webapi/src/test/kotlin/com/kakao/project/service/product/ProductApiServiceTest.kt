@@ -7,6 +7,7 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class ProductApiServiceTest {
@@ -19,6 +20,7 @@ class ProductApiServiceTest {
     }
 
     @Test
+    @DisplayName("메뉴 목록 조회")
     fun getProductList() {
 
         // case
@@ -37,6 +39,7 @@ class ProductApiServiceTest {
     }
 
     @Test
+    @DisplayName("인기메뉴 목록 조회")
     fun getPopularProductList() {
 
         // case

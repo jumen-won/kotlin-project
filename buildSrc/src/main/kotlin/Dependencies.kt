@@ -5,6 +5,7 @@ object Libs {
     fun spring_boot_starter(moduleName: String) = "$spring_boot_starter-$moduleName"
     val spring_boot_starter_test = "org.springframework.boot:spring-boot-starter-test"
     val spring_security_test = "org.springframework.security:spring-security-test"
+    val annotation_processor = "org.springframework.boot:spring-boot-configuration-processor"
 
     // plugin_spring
     val plugin_spring = "org.jetbrains.kotlin.plugin.spring"
@@ -17,7 +18,6 @@ object Libs {
     val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect"
     val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib"
-
 
     // mockk
     val mockk = "io.mockk:mockk:${Versions.mockk}"
@@ -45,10 +45,16 @@ object Libs {
 
     val commons_lang3 = "org.apache.commons:commons-lang3:${Versions.commons_lang3}"
 
+    // springdoc
+    val springdoc_openapi_data_rest = "org.springdoc:springdoc-openapi-data-rest:${Versions.springdoc_openapi}"
+    val springdoc_openapi_ui = "org.springdoc:springdoc-openapi-ui:${Versions.springdoc_openapi}"
+    val springdoc_openapi_kotlin = "org.springdoc:springdoc-openapi-kotlin:${Versions.springdoc_openapi}"
+
 
 }
 
 object Versions {
+    val springdoc_openapi = "1.6.0"
     val commons_lang3 = "3.12.0"
     val kafka_clients = "2.8.0"
     val spring_boot = "2.7.7"
@@ -65,6 +71,7 @@ object Versions {
 }
 
 object Plugins {
+    val spring_boot = "org.springframework.boot"
     val jvm = "jvm"
     val plugin_spring = "plugin.spring"
     val plugin_jpa = "plugin.jpa"

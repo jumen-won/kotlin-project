@@ -34,18 +34,19 @@ class ProductService(
         val productScoreMap = mapOf<String, Long>().toMutableMap()
 
 
-        for (before in 0 until STANDARD_DAYS) {
+        for (before in 0 until getStandardDays) {
             val targetDate = now.minusDays(before.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
             val productWithCountList =
-                purchaseEventService.getProductWithCountListByDate(targetDate, STANDARD_SIZE.toLong())
+                purchaseEventService.getProductCountPairListByDate(targetDate, getStandardSize.toLong())
             productWithCountList.forEach {
                 logger.info { "[$targetDate] $it" }
-                productScoreMap.merge(it.productId, it.count) { a, b -> a + b }
+                productScoreMap.merge(it.first, it.second) { a, b -> a + b }
             }
         }
 
         val popularProductKeys =
-            productScoreMap.entries.sortedByDescending { it.value }.take(STANDARD_SIZE).map { it.key }
+            productScoreMap.entries.sortedByDescending { it.value }.take(getStandardSize).map { it.key }
+
         return popularProductKeys.map { productId ->
             PopularProductInfo(
                 getProductInfoOrElseThrow(productId),

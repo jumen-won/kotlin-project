@@ -7,6 +7,7 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.ArgumentMatchers.anyLong
@@ -22,6 +23,7 @@ class WalletApiServiceTest {
     }
 
     @Test
+    @DisplayName("포인트 충전")
     fun charge() {
         val amount = 100000L
         val walletId = 1L
@@ -33,7 +35,8 @@ class WalletApiServiceTest {
     }
 
     @Test
-    fun `충전금액이 최소금액보다 적으면 에러발생`() {
+    @DisplayName("충전 금액이 최소 금액보다 적으면 에러 발생")
+    fun charge_minimum_amount_condition() {
         val amount = 100L
         assertThrows<InsufficientChargeMinimumConditionsException> {
             walletApiService.charge(anyLong(), amount)
@@ -41,7 +44,8 @@ class WalletApiServiceTest {
     }
 
     @Test
-    fun `충전금액이 기준단위가 아니면 에러발생`() {
+    @DisplayName("충전 금액이 기준 단위가 아니면 에러 발생")
+    fun charge_base_unit_condition() {
         val amount = 11000L
         assertThrows<InsufficientChargeMinimumConditionsException> {
             walletApiService.charge(anyLong(), amount)

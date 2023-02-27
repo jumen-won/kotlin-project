@@ -8,6 +8,7 @@ import com.kakao.project.controller.wallet.WalletChargeRequest
 import com.kakao.project.purchase.PurchaseEventService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -29,6 +30,7 @@ class ProductControllerTest(
     }
 
     @Test
+    @DisplayName("실시간 인기메뉴 목록 갱신 테스트")
     fun `update popular products live`() {
 
         // case
@@ -83,6 +85,7 @@ class ProductControllerTest(
     }
 
     @Test
+    @DisplayName("메뉴 목록 조회 정상 응답")
     fun getProductList() {
         // case
         val totalProductSize = 12
@@ -105,6 +108,7 @@ class ProductControllerTest(
     }
 
     @Test
+    @DisplayName("인기메뉴 목록 조회 정상 응답")
     fun getPopularProductList() {
         // case
         charge(100000L)

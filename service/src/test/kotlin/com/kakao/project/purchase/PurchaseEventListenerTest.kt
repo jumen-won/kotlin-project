@@ -8,6 +8,7 @@ import io.mockk.slot
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
@@ -21,6 +22,7 @@ class PurchaseEventListenerTest {
     }
 
     @Test
+    @DisplayName("주문 내역 이벤트가 발생한 경우 주문 횟수 카운트를 호출")
     fun handlePurchaseCreatedEvent() {
         // case
         val now = LocalDate.now()

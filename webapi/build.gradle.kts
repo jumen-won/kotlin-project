@@ -11,6 +11,10 @@ project(":webapi") {
         implementation(Libs.spring_boot_starter("web")) { exclude(Libs.spring_boot, "spring-boot-starter-tomcat") }
         implementation(Libs.spring_boot_starter("undertow"))
 
+        implementation(Libs.springdoc_openapi_data_rest)
+        implementation(Libs.springdoc_openapi_ui)
+        implementation(Libs.springdoc_openapi_kotlin)
+
         testImplementation(Libs.spring_boot_starter_test) { exclude("org.junit.vintage", "junit-vintage-engine") }
         testImplementation(Libs.mockk)
         testImplementation(Libs.kafka_clients)

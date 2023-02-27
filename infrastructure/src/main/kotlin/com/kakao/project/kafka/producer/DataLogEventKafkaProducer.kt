@@ -39,7 +39,6 @@ class DataLogEventKafkaProducer(
 
             override fun onFailure(ex: KafkaProducerException) {
                 logger.error("Message 전달 오류 [ $message ] due to: ${ex.getFailedProducerRecord<String, String>()}")
-
             }
         }
 

@@ -12,6 +12,5 @@ project(":infrastructure") {
         implementation(Libs.mysql_connector_java)
         implementation(Libs.redisson)
         implementation(Libs.spring_kafka)
-//        api(Libs.spring_boot_starter("data-redis"))
     }
 }

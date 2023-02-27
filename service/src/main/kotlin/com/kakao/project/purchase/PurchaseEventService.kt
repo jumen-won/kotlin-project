@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
 private val logger = KotlinLogging.logger {}
+typealias ProductCountPair = Pair<String, Long>
 
 @Service
 class PurchaseEventService(
@@ -17,15 +18,16 @@ class PurchaseEventService(
     private val PURCHASE_DATE_KEY = "${PURCHASE_ZSET_KEY_PREFIX}${PURCHASE_ZSET_KEY_SUFFIX}"
     private val PRODUCT_MEMBER_KEY = "${PRODUCT_MEMBER_KEY_PREFIX}${PRODUCT_MEMBER_KEY_SUFFIX}"
 
-    fun getProductWithCountListByDate(date: String, size: Long): List<ProductWithCount> {
+    fun getProductCountPairListByDate(date: String, size: Long): List<ProductCountPair> {
         val zSet = redisTemplate.opsForZSet()
         val purchaseDateKey = getPurchaseDateKey(date)
         val tuples = zSet.reverseRangeWithScores(purchaseDateKey, 0, size - 1)!!
         return tuples.map {
             val productId = (it.value as String).replace(PRODUCT_MEMBER_KEY_PREFIX, "")
             val count = it.score!!.toLong()
-            ProductWithCount(productId, count)
+            ProductCountPair(productId, count)
         }
+
     }
 
     fun count(date: LocalDate, productId: String, quantity: Int) {
